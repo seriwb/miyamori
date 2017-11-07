@@ -1,0 +1,16 @@
+{
+  "name": "kintai-bot",
+  "version": "1.0.0",
+  "description": "Bot to input attendance from Slack.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "seri",
+  "license": "MIT",
+  "dependencies": {
+    "botkit": "^0.6.6",
+    "server": "^1.0.1"
+  }
+}
