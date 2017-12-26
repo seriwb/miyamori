@@ -1,8 +1,12 @@
 'use strict';
 
 module.exports = (controller) => {
-  controller.hears('みゃーもり','direct_message', (bot, message) => {
-    bot.reply(message,'はいは〜い、宮森ですよー');
+  controller.hears(['miyamori', '宮森', 'みやもり'], 'direct_message', (bot, message) => {
+    bot.reply(message, 'はい！なんでしょうか？');
+  });
+
+  controller.hears('みゃーもり', 'direct_message', (bot, message) => {
+    bot.reply(message, 'はいは〜い、宮森ですよー\nどうしました？');
   });
 
   controller.hears(['hello', 'hi', 'お疲れ', 'おつかれ'], 'direct_message,direct_mention,mention', (bot, message) => {
@@ -18,9 +22,9 @@ module.exports = (controller) => {
     // });
 
     bot.api.users.info({user: message.user}, (error, response) => {
-      let { name, real_name } = response.user;
-      let { display_name } = response.user.profile;
-
+      let {name, real_name} = response.user;
+      let {display_name} = response.user.profile;
+      //console.log(response.user);
       if (display_name) {
         bot.reply(message, `お疲れ様です！${display_name}さん`);
       } else {

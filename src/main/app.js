@@ -14,3 +14,4 @@ controller.spawn({
 }).startRTM();
 
 require('./hears.js')(controller);
+require('./contact')(controller);   // TODO:hearsを別にする
