@@ -1,9 +1,9 @@
-# kintai-bot
+# miyamori
 Bot to input attendance from Slack.
 
 ## For Developer
 
-kintai-botの実行コードは、`src/main`配下のコードをbabelでトランスパイルして`dist/main`配下に出力しています。
+本プロジェクトの実行コードは、`src/main`配下のコードをbabelでトランスパイルして`dist/main`配下に出力しています。
 
 コード変更後は、以下のコマンドで実行コードを再生成してください。
 

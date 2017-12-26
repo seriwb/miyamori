@@ -1,0 +1,14 @@
+---
+token: xxxx-111111111111-XXXXXXXXXXXXXXXXXXXXXXXX
+
+email:
+  use: false
+  smtp:
+    host: smtp.gmail.com
+    port: 465
+    ssl: true
+    auth:
+      user: 'user-name@gmail.com'
+      pass: 'user-password'
+  from: 'sendFrom@mail.com'
+  to: 'sendTo@mail.com'

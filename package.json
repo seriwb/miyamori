@@ -1,5 +1,5 @@
 {
-  "name": "kintai-bot",
+  "name": "miyamori",
   "version": "1.0.0",
   "description": "Bot to input attendance from Slack.",
   "main": "index.js",
@@ -7,10 +7,10 @@
     "build": "babel src -d dist",
     "start": "node dist/main/app.js",
     "clean": "rm -rf dist",
-    "fstart": "node_modules/forever/bin/forever start -l `pwd`/kintai-bot.log -a dist/main/app.js",
-    "frestart": "node_modules/forever/bin/forever restart -l `pwd`/kintai-bot.log -a dist/main/app.js",
-    "fstop": "node_modules/forever/bin/forever stop dist/main/app.js",
-    "flist": "node_modules/forever/bin/forever list",
+    "fstart": "forever start -l `pwd`/miyamori.log -a dist/main/app.js",
+    "frestart": "forever restart -l `pwd`/miyamori.log -a dist/main/app.js",
+    "fstop": "forever stop dist/main/app.js",
+    "flist": "forever list",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -18,13 +18,15 @@
   "license": "MIT",
   "dependencies": {
     "botkit": "^0.6.7",
+    "config": "^1.28.1",
     "forever": "^0.15.3",
-    "server": "^1.0.12"
+    "js-yaml": "^3.10.0",
+    "server": "^1.0.12",
+    "sqlite3": "^3.1.13"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1"
   }
 }
