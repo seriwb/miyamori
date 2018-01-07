@@ -36,7 +36,10 @@ controller.setupWebserver(port, (err, webserver) => {
   }
 
   //  controller.createWebhookEndpoints(webserver, config.verification_token);
+<<<<<<< HEAD
   controller.createWebhookEndpoints(webserver);
+=======
+>>>>>>> 32bd1f4... update
 
   controller.createOauthEndpoints(webserver, (err, req, res) => {
     if (err) {

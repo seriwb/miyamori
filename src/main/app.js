@@ -81,9 +81,5 @@ controller.on('rtm_close', (bot) => {
   // you may want to attempt to re-open
 });
 
-controller.spawn({
-  token: config.token
-}).startRTM();
-
 require('./hears.js')(controller);
 require('./contact')(controller);   // TODO:hearsを別にする
