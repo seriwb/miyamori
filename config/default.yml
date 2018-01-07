@@ -1,5 +1,10 @@
 ---
-token: xxxx-111111111111-XXXXXXXXXXXXXXXXXXXXXXXX
+client_id: ''
+client_secret: ''
+verification_token: ''
+
+port: 3000
+redirect_uri: ''
 
 email:
   use: false

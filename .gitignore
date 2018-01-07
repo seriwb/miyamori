@@ -1,6 +1,8 @@
 dist/
 *.sqlite
+/data
 
+/config/default-test.yml
 /.idea
 
 # Logs
