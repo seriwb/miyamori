@@ -30,7 +30,8 @@ controller.setupWebserver(port, (err, webserver) => {
     process.exit(1);
   }
 
-  controller.createWebhookEndpoints(webserver, config.verification_token);
+//  controller.createWebhookEndpoints(webserver, config.verification_token);
+  controller.createWebhookEndpoints(webserver);
 
   controller.createOauthEndpoints(webserver, (err, req, res) => {
     if (err) {
