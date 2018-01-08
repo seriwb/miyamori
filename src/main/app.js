@@ -49,7 +49,7 @@ function trackBot(bot) {
   _bots[bot.config.token] = bot;
 }
 
-controller.on('create_bot', (bot, config) => {
+controller.on('create_bot', (bot, conf) => {
 
   if (_bots[bot.config.token]) {
     // already online! do nothing.
@@ -59,7 +59,7 @@ controller.on('create_bot', (bot, config) => {
         trackBot(bot);
       }
 
-      bot.startPrivateConversation({user: config.createdBy}, (err, convo) => {
+      bot.startPrivateConversation({user: conf.createdBy}, (err, convo) => {
         if (err) {
           console.log(err);
         } else {
@@ -79,6 +79,16 @@ controller.on('rtm_open', (bot) => {
 controller.on('rtm_close', (bot) => {
   console.log('** The RTM api just closed');
   // you may want to attempt to re-open
+});
+
+controller.on('slash_command', (bot, message) => {
+  switch (message.command) {
+    case '/kintai':
+      let choices = message.text.split(',');
+      let choice = choices[Math.random() * choices.length | 0];
+      bot.replyPrivate(message, '<@' + message.user + '> *' + choice + '*');
+      break;
+  }
 });
 
 require('./hears.js')(controller);
