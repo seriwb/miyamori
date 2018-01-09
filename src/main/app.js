@@ -2,6 +2,7 @@
 
 import Botkit from 'botkit';
 import config from 'config';
+import simple_storage from 'botkit/lib/storage/simple_storage.js';
 
 const DB_PATH = process.cwd() + "/miyamori.sqlite";
 
@@ -14,6 +15,7 @@ const port = process.env.PORT || config.port;
 
 const controller = Botkit.slackbot({
   debug: false,
+  storage: simple_storage({path: './data/'}),
   json_file_store: './data/', // TODO:Sqliteに変更する
 }).configureSlackApp(
   {
@@ -63,8 +65,9 @@ controller.on('create_bot', (bot, conf) => {
         if (err) {
           console.log(err);
         } else {
-          convo.say('I am a bot that has just joined your team');
-          convo.say('You must now /invite me to a channel so that I can be of use!');
+          // TODO:開発中はコメントアウト
+          convo.say('はい、勤怠管理の宮森です！\n' +
+            '/invite で招待いただければ、勤怠連絡させていただきます！');
         }
       });
     });

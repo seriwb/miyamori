@@ -1,7 +1,11 @@
 'use strict';
 
+import { formatDate } from './util';
+
 module.exports = (controller) => {
   controller.hears(['kintai', '勤怠', 'きんたい'], ['direct_message', 'direct_mention'], (bot, message) => {
+
+    let datetime = formatDate(new Date(), 'YYYYMMDD-hh:mm:ss');
 
     bot.reply(message, {
       "text": "勤怠ですね",
@@ -9,45 +13,45 @@ module.exports = (controller) => {
         {
           "text": "今日はどうされましたか？",
           "fallback": "大丈夫・・・ですか？お待ちしてますね！",
-          "callback_id": `contact_kintai-${message.user.id}`,
-          "color": "#3AA3E3",
+          "callback_id": `contact_kintai-${message.user}-${datetime}`,
+          "color": "#0079e3",
           "attachment_type": "default",
           "actions": [
             {
-              "name": "kintai",
+              "name": "absence",
               "text": "休み",
               "type": "button",
-              "value": "absence"
+              "value": "休み"
             },
             {
-              "name": "kintai",
+              "name": "late",
               "text": "遅刻",
               "type": "button",
-              "value": "late"
+              "value": "遅刻"
             },
             {
-              "name": "kintai",
+              "name": "early",
               "text": "早出",
               "type": "button",
-              "value": "early"
+              "value": "早出"
             },
             {
-              "name": "kintai",
+              "name": "tyokushutsu",
               "text": "直出",
               "type": "button",
-              "value": "tyokushutsu"
+              "value": "直出"
             },
             {
-              "name": "kintai",
+              "name": "tyokki",
               "text": "直帰",
               "type": "button",
-              "value": "tyokki"
+              "value": "直帰"
             },
             {
-              "name": "kintai",
+              "name": "leave",
               "text": "早退",
               "type": "button",
-              "value": "leave"
+              "value": "早退"
             }
           ]
         }
@@ -60,16 +64,35 @@ module.exports = (controller) => {
   });
 
 
-  // TODO:サンプル
   controller.on('interactive_message_callback', (bot, message) => {
 
     const ids = message.callback_id.split(/\-/);
     const item_id = ids[0];
-    const user_id = ids[1];
 
     if (item_id === 'contact_kintai') {
-      bot.replyInteractive(message, {
-        "text": `${user_id}さんは${message.actions[0].value}ですね、了解です！`
+      const user_id = ids[1];
+      const date = ids[2];
+      const time = ids[3];
+
+      // TODO:users利用はサンプル
+      controller.storage.users.get(user_id, (err, user) => {
+
+        if (!user) {
+          user = {
+            id: user_id,
+            list: []
+          }
+        }
+
+        bot.api.users.info({user: message.user}, (error, response) => {
+          let {display_name} = response.user.profile;
+
+            bot.replyInteractive(message, {
+              "text": `${display_name}さんは${message.actions[0].value}ですね、了解です！`
+            });
+        });
+
+        controller.storage.users.save(user);
       });
     }
 
