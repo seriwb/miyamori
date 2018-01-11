@@ -2,7 +2,7 @@
 
 import Botkit from 'botkit';
 import config from 'config';
-import simple_storage from 'botkit/lib/storage/simple_storage.js';
+import { kintai_storage } from './storage';
 
 const DB_PATH = process.cwd() + "/miyamori.sqlite";
 
@@ -15,8 +15,8 @@ const port = process.env.PORT || config.port;
 
 const controller = Botkit.slackbot({
   debug: false,
-  storage: simple_storage({path: './data/'}),
-  json_file_store: './data/', // TODO:Sqliteに変更する
+  storage: kintai_storage({path: './data/'}),
+  // json_file_store: './data/', // TODO:Sqliteに変更する
 }).configureSlackApp(
   {
     clientId: config.client_id,

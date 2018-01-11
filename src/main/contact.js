@@ -74,12 +74,13 @@ module.exports = (controller) => {
       const date = ids[2];
       const time = ids[3];
 
+      const kintai_id = date;
       // TODO:users利用はサンプル
-      controller.storage.users.get(user_id, (err, user) => {
+      controller.storage.kintai.get(kintai_id, (err, kintai) => {
 
-        if (!user) {
-          user = {
-            id: user_id,
+        if (!kintai) {
+          kintai = {
+            id: kintai_id,
             list: []
           }
         }
@@ -92,7 +93,7 @@ module.exports = (controller) => {
             });
         });
 
-        controller.storage.users.save(user);
+        controller.storage.kintai.save(kintai);
       });
     }
 
