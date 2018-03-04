@@ -66,7 +66,7 @@ controller.on('create_bot', (bot, conf) => {
           console.log(err);
         } else {
           // TODO:開発中はコメントアウト
-          convo.say('はい、勤怠管理の宮森です！\n' +
+          convo.say('勤怠管理の宮森です！\n' +
             '/invite で招待いただければ、勤怠連絡させていただきます！');
         }
       });

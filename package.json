@@ -2,7 +2,7 @@
   "name": "miyamori",
   "version": "1.0.0",
   "description": "Bot to input attendance from Slack.",
-  "main": "index.js",
+  "main": "dist/main/app.js",
   "scripts": {
     "build": "babel src -d dist",
     "start": "node dist/main/app.js",

@@ -19,7 +19,7 @@ export function kintai_storage(config) {
       if (err) {
         cb(err, data);
       } else {
-        cb(err, Object.keys(data).map((key) => {return data[key];}));
+        cb(err, Object.keys(data).map((key) => data[key]));
       }
     };
   };
