@@ -4,8 +4,6 @@ import Botkit from 'botkit';
 import config from 'config';
 import { kintai_storage } from './storage';
 
-const DB_PATH = process.cwd() + "/miyamori.sqlite";
-
 if (!config.client_id || !config.client_secret || !config.port) {
   console.error('Specify client_id client_secret and port in environment');
   process.exit(1);
@@ -94,5 +92,5 @@ controller.on('slash_command', (bot, message) => {
   }
 });
 
-require('./hears.js')(controller);
+require('./hears')(controller);
 require('./contact')(controller);   // TODO:hearsを別にする

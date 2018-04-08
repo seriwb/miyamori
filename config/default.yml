@@ -15,5 +15,3 @@ email:
     auth:
       user: 'user-name@gmail.com'
       pass: 'user-password'
-  from: 'sendFrom@mail.com'
-  to: 'sendTo@mail.com'

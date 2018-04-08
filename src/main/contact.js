@@ -1,6 +1,6 @@
 'use strict';
 
-import { formatDate } from './util';
+import {formatDate} from './util';
 
 module.exports = (controller) => {
   controller.hears(['kintai', '勤怠', 'きんたい'], ['direct_message', 'direct_mention'], (bot, message) => {
@@ -82,15 +82,15 @@ module.exports = (controller) => {
           kintai = {
             id: kintai_id,
             list: []
-          }
+          };
         }
 
         bot.api.users.info({user: message.user}, (error, response) => {
           let {display_name} = response.user.profile;
 
-            bot.replyInteractive(message, {
-              "text": `${display_name}さんは${message.actions[0].value}ですね、了解です！`
-            });
+          bot.replyInteractive(message, {
+            "text": `${display_name}さんは${message.actions[0].value}ですね、了解です！`
+          });
         });
 
         controller.storage.kintai.save(kintai);
