@@ -17,13 +17,13 @@
   "author": "seri",
   "license": "MIT",
   "dependencies": {
-    "botkit": "^0.6.7",
-    "config": "^1.29.1",
+    "botkit": "^0.6.13",
+    "config": "^1.30.0",
     "forever": "^0.15.3",
     "jfs": "^0.3.0",
-    "js-yaml": "^3.10.0",
+    "js-yaml": "^3.11.0",
     "node-schedule": "^1.3.0",
-    "sqlite3": "^3.1.13"
+    "sqlite3": "^4.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
