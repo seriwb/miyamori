@@ -16,6 +16,7 @@ export default class Db {
       this.db.run(
         "CREATE TABLE IF NOT EXISTS user(" +
         "id INTEGER, " +          // User Id
+        "slack_id TEXT, " +       // Slack Id
         "name TEXT, " +           //
         "department TEXT, " +     // 所属
         "email TEXT, " +          // 自分のメールアドレス

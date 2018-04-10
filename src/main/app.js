@@ -9,6 +9,7 @@ if (!config.client_id || !config.client_secret || !config.port) {
   process.exit(1);
 }
 
+// Herokuのための設定
 const port = process.env.PORT || config.port;
 
 const controller = Botkit.slackbot({
@@ -82,15 +83,6 @@ controller.on('rtm_close', (bot) => {
   // you may want to attempt to re-open
 });
 
-controller.on('slash_command', (bot, message) => {
-  switch (message.command) {
-    case '/kintai':
-      let choices = message.text.split(',');
-      let choice = choices[Math.random() * choices.length | 0];
-      bot.replyPrivate(message, '<@' + message.user + '> *' + choice + '*');
-      break;
-  }
-});
-
+require('./slash_command')(controller);
 require('./hears')(controller);
 require('./contact')(controller);   // TODO:hearsを別にする
