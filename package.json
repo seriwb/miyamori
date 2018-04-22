@@ -12,7 +12,7 @@
     "fstop": "forever stop dist/main/app.js",
     "flist": "forever list",
     "lint": "eslint src/**",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --compilers js:babel-core/register src/test/**/*.js"
   },
   "keywords": [],
   "author": "seri",
@@ -32,6 +32,8 @@
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
-    "eslint": "^4.19.1"
+    "eslint": "^4.19.1",
+    "chai": "*",
+    "mocha": "*"
   }
 }
