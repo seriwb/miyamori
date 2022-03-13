@@ -5,7 +5,7 @@
   "main": "dist/app.js",
   "scripts": {
     "ngrok": "ngrok http 3000",
-    "dev": "babel src -d dist && node --require dotenv/config dist/app.js & ngrok http 3000",
+    "dev": "babel src -d dist && node --require dotenv/config dist/app.js",
     "start:dev": "node --require dotenv/config dist/app.js",
     "build": "babel src -d dist",
     "start": "node dist/app.js",
@@ -30,6 +30,7 @@
     "@babel/preset-env": "^7.16.11",
     "dotenv": "^16.0.0",
     "eslint": "^8.11.0",
+    "eslint-plugin-import": "^2.25.4",
     "ngrok": "^4.3.1"
   }
 }

@@ -8,7 +8,13 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
+  "plugins": ["import"],
   "rules": {
+    "sort-imports": ["error", { "ignoreDeclarationSort": true }],
+    "import/order": ["error", { "newlines-between": "always" }],
+    "import/no-unresolved": "off",
+    "no-unused-vars": "warn",
+    "no-irregular-whitespace": ["off"],
     "indent": ["error", 2, { "SwitchCase": 1 }],
     "linebreak-style": ["error", "unix"],
     //    "quotes": [
