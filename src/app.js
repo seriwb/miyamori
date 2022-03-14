@@ -1,9 +1,45 @@
 import { App, LogLevel } from '@slack/bolt';
 
+import { hears } from './hears';
+
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
   signingSecret: process.env.SLACK_SIGNING_SECRET,
   logLevel: LogLevel.DEBUG,
+});
+
+// hears(app);
+
+app.message(/^(miyamori|宮森|みやもり)$/, async ({ message, say }) => {
+  if (message.channel_type == 'im') {
+    await say({
+      blocks: [
+        {
+          type: 'section',
+          text: {
+            type: 'mrkdwn',
+            text: 'はい！なんでしょうか？',
+          },
+        },
+      ],
+      text: `'はい！なんでしょうか？'`,
+    });
+  }
+});
+
+app.message('みゃーもり', async ({ message, say }) => {
+  await say({
+    blocks: [
+      {
+        type: 'section',
+        text: {
+          type: 'mrkdwn',
+          text: 'はいは〜い、宮森ですよー\nどうしました？',
+        }
+      },
+    ],
+    text: 'はいは〜い、宮森ですよー\nどうしました？',
+  });
 });
 
 // Listens to incoming messages that contain "hello"
