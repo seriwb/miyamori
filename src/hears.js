@@ -1,16 +1,13 @@
-'use strict';
-
-module.exports = (controller) => {
-  controller.hears(['miyamori', '宮森', 'みやもり'], 'direct_message', (bot, message) => {
+export function hears(app) {
+  app.message(['miyamori', '宮森', 'みやもり'], 'direct_message', (bot, message) => {
     bot.reply(message, 'はい！なんでしょうか？');
   });
 
-  controller.hears('みゃーもり', 'direct_message', (bot, message) => {
+  app.message('みゃーもり', 'direct_message', (bot, message) => {
     bot.reply(message, 'はいは〜い、宮森ですよー\nどうしました？');
   });
 
-  controller.hears(['hello', 'hi', 'お疲れ', 'おつかれ'], 'direct_message,direct_mention,mention', (bot, message) => {
-
+  app.message(['hello', 'hi', 'お疲れ', 'おつかれ'], 'direct_message,direct_mention,mention', (bot, message) => {
     // bot.api.reactions.add({
     //   timestamp: message.ts,
     //   channel: message.channel,
@@ -21,9 +18,9 @@ module.exports = (controller) => {
     //   }
     // });
 
-    bot.api.users.info({user: message.user}, (error, response) => {
-      let {name, real_name} = response.user;
-      let {display_name} = response.user.profile;
+    bot.api.users.info({ user: message.user }, (error, response) => {
+      let { name, real_name } = response.user;
+      let { display_name } = response.user.profile;
       //console.log(response.user);
       if (display_name) {
         bot.reply(message, `お疲れ様です！${display_name}さん`);
@@ -32,4 +29,4 @@ module.exports = (controller) => {
       }
     });
   });
-};
+}

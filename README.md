@@ -1,4 +1,5 @@
 # miyamori
+勤怠管理は任せてください！
 Bot to input attendance from Slack.
 
 ## For Developer

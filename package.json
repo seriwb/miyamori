@@ -2,15 +2,14 @@
   "name": "miyamori",
   "version": "1.0.0",
   "description": "Bot to input attendance from Slack.",
-  "main": "dist/main/app.js",
+  "main": "dist/app.js",
   "scripts": {
+    "ngrok": "ngrok http 3000",
+    "dev": "babel src -d dist && node --require dotenv/config dist/app.js",
+    "start:dev": "node --require dotenv/config dist/app.js",
     "build": "babel src -d dist",
-    "start": "node dist/main/app.js",
+    "start": "node dist/app.js",
     "clean": "rm -rf dist",
-    "fstart": "forever start -l `pwd`/miyamori.log -a dist/main/app.js",
-    "frestart": "forever restart -l `pwd`/miyamori.log -a dist/main/app.js",
-    "fstop": "forever stop dist/main/app.js",
-    "flist": "forever list",
     "lint": "eslint src/**",
     "test": "mocha --compilers js:babel-core/register src/test/**/*.js"
   },
@@ -18,22 +17,20 @@
   "author": "seri",
   "license": "MIT",
   "dependencies": {
-    "botkit": "^0.6.13",
-    "config": "^1.30.0",
-    "forever": "^0.15.3",
+    "@slack/bolt": "^3.10.0",
+    "config": "^3.3.7",
     "jfs": "^0.3.0",
-    "js-yaml": "^3.11.0",
-    "log4js": "^2.5.3",
-    "node-schedule": "^1.3.0",
-    "nodemailer": "^4.6.4",
-    "sqlite3": "^4.0.0"
+    "js-yaml": "^4.1.0",
+    "log4js": "^6.4.2",
+    "sqlite3": "^5.0.2"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "eslint": "^4.19.1",
-    "chai": "*",
-    "mocha": "*"
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.5",
+    "@babel/preset-env": "^7.16.11",
+    "dotenv": "^16.0.0",
+    "eslint": "^8.11.0",
+    "eslint-plugin-import": "^2.25.4",
+    "ngrok": "^4.3.1"
   }
 }
